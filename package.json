@@ -1,0 +1,30 @@
+{
+    "name"          : "printer",
+    "description"   : "Tools to send data to 'lp' binary.",
+    "version"       : "0.1.0",
+    "homepage"      : "http://github.com/armetiz/node-printer",
+    "keywords"      : ["printer", "print", "cups", "lp"],
+    "author"        : "Thomas Tourlourat <thomas@tourlourat.com>",
+    "main"          : "./printer",
+    "bugs" :
+    {
+        "mail" : "",
+        "url" : "http://github.com/armetiz/node-printer/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/armetiz/node-printer.git"
+    },
+    "engines" : {
+        "node" : ">=0.8.8"
+    },
+    "dependencies": {
+       "underscore": "1.3.3"
+    },
+    "licenses" :
+    [ {
+        "type" : "MIT", 
+        "url" : "http://github.com/armetiz/node-printer/raw/master/LICENSE"
+    }
+    ]
+}
