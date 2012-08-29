@@ -1,3 +1,4 @@
+var Job = require ("./job");
 var spawn = require("child_process").spawn;
 var _ = require ("underscore");
 
@@ -11,7 +12,6 @@ var optionsFactory = function (options) {
     defaultOptions.hostname = null;
     defaultOptions.numCopies = 1;
     defaultOptions.priority = 1;
-    defaultOptions.verbose = false;
     
     return _.defaults(options, defaultOptions);
 };
@@ -55,42 +55,27 @@ var argsFactory = function (options) {
     return args;
 };
 
-var stdioFactory = function (options) {
-    var stdio = [];
-    
-    if (true === options.verbose) {
-        stdio.push(null);
-        stdio.push(process.stdout);
-        stdio.push(process.stderr);
-    }
-    else {
-        stdio.push(null);
-        stdio.push(null);
-        stdio.push(null);
-    }
-    
-    return stdio;
-};
-
-module.exports.printText = function (text, options) {
+module.exports.printText = function (text, options, identifier) {
     options = optionsFactory(options);
     
-    var stdio = stdioFactory(options);
     var args = argsFactory(options);
-    var lp = spawn("lp", args, {stdio: stdio});
+    var lp = spawn("lp", args);
 
     lp.stdin.write(text);
     lp.stdin.end();
+    
+    return new Job(lp, identifier);
 }
 
-module.exports.printFile = function (file, options) {
+module.exports.printFile = function (file, options, identifier) {
     options = optionsFactory(options);
     
-    var stdio = stdioFactory(options);
     var args = argsFactory(options);
     
     args.push ("--");
     args.push (file);
 
-    var lp = spawn("lp", args, {stdio: stdio});
+    var lp = spawn("lp", args);
+    
+    return new Job(lp, identifier);
 }
