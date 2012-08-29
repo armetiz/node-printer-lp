@@ -1,5 +1,5 @@
-node-printer
-============
+node-printer-lp
+===============
 
 A tool to print document or data. Based on "lp" binary.
 
