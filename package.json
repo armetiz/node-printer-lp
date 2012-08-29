@@ -1,9 +1,9 @@
 {
     "name"          : "printer",
-    "description"   : "Tools to send data to 'lp' binary.",
+    "description"   : "Tool to send data to 'lp' binary.",
     "version"       : "0.1.0",
     "homepage"      : "http://github.com/armetiz/node-printer",
-    "keywords"      : ["printer", "print", "cups", "lp"],
+    "keywords"      : ["printer", "print", "cups", "lp", "job"],
     "author"        : "Thomas Tourlourat <thomas@tourlourat.com>",
     "main"          : "./printer",
     "bugs" :
