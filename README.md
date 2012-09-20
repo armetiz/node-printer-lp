@@ -6,7 +6,7 @@ A tool to print document or data. Based on "lp" binary.
 ## Quick Examples
 
 ```js
-var printer = require ("./src/printer");
+var printer = require ("printer-lp");
 var options = {
     destination: "EPSON_SX510",
 };
