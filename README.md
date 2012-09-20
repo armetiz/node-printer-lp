@@ -18,7 +18,7 @@ var jobText = printer.printText(text, options, "text_demo");
 var jobFile = printer.printFile(file, options, "file_demo");
 
 var onJobEnd = function () {
-    console.log(this.identifier + ", job finish");
+    console.log(this.identifier + ", job send to printer queue");
 };
 
 var onJobError = function (message) {

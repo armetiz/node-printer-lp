@@ -12,6 +12,8 @@ var optionsFactory = function (options) {
     defaultOptions.hostname = null;
     defaultOptions.numCopies = 1;
     defaultOptions.priority = 1;
+    defaultOptions.mediaSize = "a4";
+    defaultOptions.fitPlot = false;
     
     return _.defaults(options, defaultOptions);
 };
@@ -50,6 +52,16 @@ var argsFactory = function (options) {
     if (!_.isEmpty(options.priority) && _.isNumber(options.priority) && options.priority > 1) {
         args.push("-q");
         args.push(options.priority);
+    }
+    
+    if (_.isString(options.mediaSize)) {
+        args.push("-o");
+        args.push("mediaSize=" + options.mediaSize);
+    }
+    
+    if (!_.isEmpty(options.fitPlot) && _.isBoolean(options.fitPlot) && options.fitPlot) {
+        args.push("-o");
+        args.push("fitPlot");
     }
     
     return args;
