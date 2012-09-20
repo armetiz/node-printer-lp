@@ -12,8 +12,8 @@ var optionsFactory = function (options) {
     defaultOptions.hostname = null;
     defaultOptions.numCopies = 1;
     defaultOptions.priority = 1;
-    defaultOptions.mediaSize = "a4";
-    defaultOptions.fitPlot = false;
+    defaultOptions.media = "a4";
+    defaultOptions.fitplot = false;
     
     return _.defaults(options, defaultOptions);
 };
@@ -26,8 +26,7 @@ var argsFactory = function (options) {
     }
     
     if (_.isString(options.username)) {
-        args.push("-U");
-        args.push(options.username);
+        args.push("-U " + options.username);
     }
     
     if (true === options.backwardsCompatibility) {
@@ -35,33 +34,27 @@ var argsFactory = function (options) {
     }
     
     if (_.isString(options.destination)) {
-        args.push("-d");
-        args.push(options.destination);
+        args.push("-d " + options.destination);
     }
     
     if (_.isString(options.hostname)) {
-        args.push("-h");
-        args.push(options.hostname);
+        args.push("-h " + options.hostname);
     }
     
     if (!_.isEmpty(options.numCopies) && _.isNumber(options.numCopies) && options.numCopies > 1) {
-        args.push("-n");
-        args.push(options.numCopies);
+        args.push("-n " + options.numCopies);
     }
     
     if (!_.isEmpty(options.priority) && _.isNumber(options.priority) && options.priority > 1) {
-        args.push("-q");
-        args.push(options.priority);
+        args.push("-q " + options.priority);
     }
     
-    if (_.isString(options.mediaSize)) {
-        args.push("-o");
-        args.push("mediaSize=" + options.mediaSize);
+    if (_.isString(options.media)) {
+        args.push("-o media=" + options.media);
     }
     
-    if (!_.isEmpty(options.fitPlot) && _.isBoolean(options.fitPlot) && options.fitPlot) {
-        args.push("-o");
-        args.push("fitPlot");
+    if (true === options.fitplot) {
+        args.push("-o fitplot");
     }
     
     return args;
@@ -86,7 +79,7 @@ module.exports.printFile = function (file, options, identifier) {
     
     args.push ("--");
     args.push (file);
-
+    
     var lp = spawn("lp", args);
     
     return new Job(lp, identifier);
