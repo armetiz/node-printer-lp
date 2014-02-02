@@ -1,6 +1,8 @@
 node-printer-lp
 ===============
 
+**This repository is not maintained any more.**
+
 A tool to print document or data. Based on "lp" binary.
 
 ## Quick Examples
